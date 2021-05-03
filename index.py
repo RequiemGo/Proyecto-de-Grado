@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 UPLOAD_FOLDER = os.path.abspath("./recursos/")
-
+# Prueba de conexion
 app = Flask(__name__)
 dbdir = 'mysql+pymysql://root:@localhost:3306/recursos'
 app.config['SQLALCHEMY_DATABASE_URI'] = dbdir
