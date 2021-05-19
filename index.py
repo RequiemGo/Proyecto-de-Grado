@@ -8,6 +8,7 @@ UPLOAD_FOLDER = os.path.abspath("./recursos/")
 # Prueba de conexion
 app = Flask(__name__)
 dbdir = 'mysql+pymysql://root:@localhost:3306/recursos'
+#dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/recursos.db"
 app.config['SQLALCHEMY_DATABASE_URI'] = dbdir
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -17,9 +18,9 @@ db = SQLAlchemy(app)
 
 class Recursos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    titulo = db.Column(db.String(280), unique=True)
+    titulo = db.Column(db.String(280), )
     descripcion = db.Column(db.String(280))
-    ruta = db.Column(db.String(100), unique=True)
+    ruta = db.Column(db.String(100))
 
     def __init__(self, titulo, descripcion, ruta):
         self.titulo = titulo
@@ -27,9 +28,17 @@ class Recursos(db.Model):
         self.ruta = ruta
 
 
-recurso1 = Recursos('DINÁMICA DE SISTEMAS APLICADA A LA TOMA DE DECISIONES EN LA PRODUCCIÓN Y COMERCIALIZACIÓN PECUARIA DE SANTANDER (COLOMBIA). UN CASO DE APLICACIÓN EN UN HATO GANADERO DE LA PROVINCIA DE GARCÍA ROVIRA',
-                    'simulador soportado en un modelo de DS para apoyar la toma de decisiones relacionadas con el proceso de producción y comercialización en un hato ganadero de la provincia de García Rovira.', 'dinamica.pdf')
+recurso1 = Recursos(titulo='DINÁMICA DE SISTEMAS APLICADA A LA TOMA DE DECISIONES EN LA PRODUCCIÓN Y COMERCIALIZACIÓN PECUARIA DE SANTANDER (COLOMBIA). UN CASO DE APLICACIÓN EN UN HATO GANADERO DE LA PROVINCIA DE GARCÍA ROVIRA',
+                    descripcion='simulador soportado en un modelo de DS para apoyar la toma de decisiones relacionadas con el proceso de producción y comercialización en un hato ganadero de la provincia de García Rovira.', ruta=UPLOAD_FOLDER)
+#recurso2 = Recursos("prueba", "esto es una prueba", UPLOAD_FOLDER)
+
+#recurso3 = Recursos('de nuevo', 'here we go again', UPLOAD_FOLDER)
+#recurso4 = Recursos('a ver ', 'como fue', UPLOAD_FOLDER)
 # db.session.add(recurso1)
+# db.session.add(recurso2)
+# db.session.add(recurso3)
+# db.session.add(recurso4)
+
 # db.session.commit()
 
 
