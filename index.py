@@ -1,7 +1,9 @@
 from enum import unique
 from flask import Flask, render_template, request
+from flask.globals import session
 from flask.helpers import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import exc
 import os
 
 UPLOAD_FOLDER = os.path.abspath("./recursos/")
@@ -30,16 +32,18 @@ class Recursos(db.Model):
 
 recurso1 = Recursos(titulo='DINÁMICA DE SISTEMAS APLICADA A LA TOMA DE DECISIONES EN LA PRODUCCIÓN Y COMERCIALIZACIÓN PECUARIA DE SANTANDER (COLOMBIA). UN CASO DE APLICACIÓN EN UN HATO GANADERO DE LA PROVINCIA DE GARCÍA ROVIRA',
                     descripcion='simulador soportado en un modelo de DS para apoyar la toma de decisiones relacionadas con el proceso de producción y comercialización en un hato ganadero de la provincia de García Rovira.', ruta=UPLOAD_FOLDER)
-#recurso2 = Recursos("prueba", "esto es una prueba", UPLOAD_FOLDER)
+recurso2 = Recursos("prueba", "esto es una prueba", UPLOAD_FOLDER)
 
-#recurso3 = Recursos('de nuevo', 'here we go again', UPLOAD_FOLDER)
-#recurso4 = Recursos('a ver ', 'como fue', UPLOAD_FOLDER)
-# db.session.add(recurso1)
-# db.session.add(recurso2)
-# db.session.add(recurso3)
-# db.session.add(recurso4)
-
-# db.session.commit()
+recurso3 = Recursos('de nuevo', 'here we go again', UPLOAD_FOLDER)
+recurso4 = Recursos('a ver ', 'como fue', UPLOAD_FOLDER)
+try:
+    db.session.add(recurso1)
+    db.session.add(recurso2)
+    db.session.add(recurso3)
+    db.session.add(recurso4)
+    db.session.commit()
+except exc.IntegrityError:
+    db.session.rollback()
 
 
 @app.route("/")
