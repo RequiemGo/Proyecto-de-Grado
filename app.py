@@ -6,10 +6,12 @@ from flask.helpers import send_file, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
 import os
+from flask_ngrok import run_with_ngrok
 
 UPLOAD_FOLDER = "recursos/"
 # Prueba de conexion
 app = Flask(__name__)
+run_with_ngrok(app)
 dbdir = 'mysql+pymysql://root:@localhost:3306/recursos'
 #dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/recursos.db"
 app.config['SQLALCHEMY_DATABASE_URI'] = dbdir
@@ -42,6 +44,43 @@ try:
     db.session.add(recurso2)
     db.session.add(recurso3)
     db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+    # db.session.add(recurso4)
+
     db.session.commit()
 except exc.IntegrityError:
     db.session.rollback()
@@ -88,4 +127,4 @@ def simuladores():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True)
+    app.run()
