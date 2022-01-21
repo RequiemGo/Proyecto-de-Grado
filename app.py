@@ -12,8 +12,8 @@ UPLOAD_FOLDER = "recursos/"
 # Prueba de conexion
 app = Flask(__name__)
 run_with_ngrok(app)
-dbdir = 'mysql+pymysql://root:@localhost:3306/recursos'
-#dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/recursos.db"
+#dbdir = 'mysql+pymysql://root:@localhost:3306/recursos'
+dbdir = "sqlite:///" + os.path.abspath(os.getcwd()) + "/recursos.db"
 app.config['SQLALCHEMY_DATABASE_URI'] = dbdir
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -99,6 +99,7 @@ def documentos():
         #f.save(os.path.join(app.config[UPLOAD_FOLDER], filename))
         uploads = os.path.join(current_app.root_path,
                                app.config[UPLOAD_FOLDER])
+        #from fileinput import filename
         return send_from_directory(directory=uploads, filename=filename, as_attachment=True)
     return render_template("page-Documentos.html")
 
