@@ -10,5 +10,5 @@ El presente trabajo tiene como propósito el diseño y la implementación de un 
 4. SQLAlchemy==1.4.31
 5. python-decouple==3.5
 
-![Repositorio](1 "Repositorio")](https://i.postimg.cc/7Y6dqSJn/tesis2.png "Repositorio")
+! [Repositorio](1 "Repositorio")](https://i.postimg.cc/7Y6dqSJn/tesis2.png "Repositorio")
 
