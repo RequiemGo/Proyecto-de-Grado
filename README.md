@@ -10,4 +10,4 @@ El presente trabajo tiene como propósito el diseño y la implementación de un 
 4. SQLAlchemy==1.4.31
 5. python-decouple==3.5
 
-
+![Image text](https://github.com/CAMILOMARCHENA/Proyecto-De-Grado/blob/master/recursos/Captura%20de%20pantalla%20(105).png)
